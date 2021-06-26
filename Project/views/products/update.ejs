@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+  <body>
+    <!-- Header-->
+    <%- include("../partials/header.ejs") %>
+
+    <main class="main-newProduct">
+      <div class="container-newProduct">
+        <h2 class="titulo-newProduct">
+          EDITAR <%= prod.brands.brand + " " + prod.model %>
+        </h2>
+
+        <form
+          action="/admin/products/edit/<%= prod.id_product %>?_method=PUT"
+          method="POST"
+          enctype="multipart/form-data"
+          id="formUpdateProduct"
+        >
+          <div class="contenedor-campos-newProduct">
+            <label for="productImage">• Imagen/es</label>
+            <div id="preview">
+              <img src="/images/products/<%= prod.image %>" alt="" />
+            </div>
+            <input
+              type="file"
+              id="productImage"
+              name="productImage"
+              accept=".png, .jpg, .jpeg"
+            />
+            <div class="text-danger" id="errorImagen"></div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="brand">• Marca</label>
+            <select name="brand" id="brand">
+              <% for (let i = 0; i < marca.length; i++) { %> <% if
+              (marca[i].id_brand == prod.id_brand) { %>
+              <option value="<%= marca[i].id_brand %>" selected>
+                <%= marca[i].brand %>
+              </option>
+              <% } else { %>
+              <option value="<%= marca[i].id_brand %>">
+                <%= marca[i].brand %>
+              </option>
+              <% } %> <% } %>
+            </select>
+
+            <div class="text-danger" id="errorMarca">
+              <% if (locals.errors && errors.brand) { %> <%= errors.brand.msg %>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="model">• Modelo</label>
+            <input
+              type="text"
+              name="model"
+              id="model"
+              value="<%= prod.model %>"
+            />
+
+            <div class="text-danger" id="errorModelo">
+              <% if (locals.errors && errors.model) { %> <%= errors.model.msg %>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="price">• Precio</label>
+            <input
+              type="number"
+              name="price"
+              min="0"
+              id="price"
+              value="<%= prod.price %>"
+            />
+
+            <div class="text-danger" id="errorPrecio">
+              <% if (locals.errors && errors.price) { %> <%= errors.price.msg %>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="category">• Categoria</label>
+            <select name="category" id="category">
+              <% for (let i = 0; i < categoria.length; i++) { %> <% if
+              (categoria[i].id_category == prod.id_category) { %>
+              <option value="<%= categoria[i].id_category %>" selected>
+                <%= categoria[i].category %>
+              </option>
+              <% } else { %>
+              <option value="<%= categoria[i].id_category %>">
+                <%= categoria[i].category %>
+              </option>
+              <% } %> <% } %>
+            </select>
+
+            <div class="text-danger" id="errorCategoria">
+              <% if (locals.errors && errors.category) { %> <%=
+              errors.category.msg %> <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="genre">• Género</label>
+            <select name="genre" id="genre">
+              <% for (let i = 0; i < genero.length; i++) { %> <% if
+              (genero[i].id_genre == prod.id_genre) { %>
+              <option value="<%= genero[i].id_genre %>" selected>
+                <%= genero[i].genre %>
+              </option>
+              <% } else { %>
+              <option value="<%= genero[i].id_genre %>">
+                <%= genero[i].genre %>
+              </option>
+              <% } %> <% } %>
+            </select>
+
+            <div class="text-danger" id="errorGenero">
+              <% if (locals.errors && errors.genre) { %> <%= errors.genre.msg %>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="shortDescription">• Descripción Breve</label>
+            <textarea
+              name="shortDescription"
+              id="shortDescription"
+              cols="1"
+              rows="1"
+              maxlength="60"
+            >
+<%= prod.short_description %></textarea
+            >
+
+            <div class="text-danger" id="errorDescCort">
+              <% if (locals.errors && errors.shortDescription) { %> <%=
+              errors.shortDescription.msg %> <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="longDescription">• Descripción Completa</label>
+            <textarea
+              name="longDescription"
+              id="longDescription"
+              cols="10"
+              rows="10"
+            >
+<%= prod.long_description %></textarea
+            >
+
+            <div class="text-danger" id="errorDescLarg">
+              <% if (locals.errors && errors.longDescription) { %> <%=
+              errors.longDescription.msg %> <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <label for="available">• Estado</label>
+            <select name="available" id="available">
+              <% if (prod.available == "Yes" ) { %>
+              <option value="Yes" selected>Activo</option>
+              <option value="No">Inactivo</option>
+              <% } else { %>
+              <option value="Yes">Activo</option>
+              <option value="No" selected>Inactivo</option>
+              <% } %>
+            </select>
+          </div>
+
+          <div class="contenedor-campos-newProduct" id="erroresNewProd">
+            <p>ERROR: debes rellenar el formulario correctamente</p>
+          </div>
+
+          <div class="contenedor-campos-newProduct">
+            <button type="submit" class="boton-newProduct">ACTUALIZAR</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer-->
+    <%- include("../partials/footer.ejs")%>
+  </body>
+</html>

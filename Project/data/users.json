@@ -1,0 +1,35 @@
+[
+  {
+    "firstName": "Admin",
+    "lastName": "",
+    "dateOfBirth": "2021-01-01",
+    "email": "admin@admin.com",
+    "password": "$2b$10$S4Z01P8PJQpp5DrPJSmeeu3t90uC.V/7NcCajLlxJs.kZk6dPz/gS",
+    "phone": "1158585252",
+    "active": "true",
+    "admin": "true",
+    "id": 1
+  },
+  {
+    "firstName": "Mariano",
+    "lastName": "Suarez",
+    "dateOfBirth": "2021-04-07",
+    "email": "mariano@suarez.com",
+    "phone": "1122334455",
+    "password": "$2b$10$5YnBl7X3JkHhbfcePbXDausJ.2LB894b.v6Iy9/SMbfB64W2RqHjy",
+    "admin": "false",
+    "active": "true",
+    "id": 12
+  },
+  {
+    "firstName": "Laura",
+    "lastName": "Gomez",
+    "dateOfBirth": "2000-01-01",
+    "email": "laura@gomez.com",
+    "phone": "1122334455",
+    "password": "$2b$10$5YnBl7X3JkHhbfcePbXDausJ.2LB894b.v6Iy9/SMbfB64W2RqHjy",
+    "admin": "false",
+    "active": "true",
+    "id": 13
+  }
+]

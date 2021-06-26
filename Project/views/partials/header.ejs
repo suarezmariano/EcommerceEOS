@@ -1,0 +1,108 @@
+<header class="header">
+  <a href="/">
+    <img src="/images/index/EOS-gold.svg" class="logoEOS" alt="logo eos"
+  /></a>
+
+  <form action="#" method="GET" class="busqueda-header">
+    <input type="text" placeholder="Buscar productos" name="search" />
+    <button type="submit">
+      <i class="fas fa-search logoLupa"></i>
+    </button>
+  </form>
+
+  <!-- Menu Hamburguesa -->
+  <section class="menu-hamburguesa-header">
+    <div class="container-icomo-hamburguesa" id="icono-menu">
+      <a href="#"><i class="fas fa-bars"></i></a>
+    </div>
+    <div class="cont-menu-hamburguesa active" id="menu-hamburguesa">
+      <div class="icono-cerrar">
+        <a href="#">
+          <i class="fas fa-times"></i>
+        </a>
+      </div>
+      <% if (locals.isAdminLogged){ %>
+      <nav>
+        <a href="/users/profile">Panel Administrador</a>
+        <a href="/users/detail/1">Ver Perfil</a>
+        <a href="/users/logout">Cerrar sesión</a>
+      </nav>
+      <% } else if (locals.isLogged) {%>
+      <nav>
+        <a href="/users/history"><span class="dorado">● </span>Mis Compras</a>
+        <a href="/users/favs"
+          ><span class="dorado">● </span>Favoritos <i class="fas fa-heart"></i
+        ></a>
+        <a href="/products/cart"
+          ><span class="dorado">● </span>Carrito
+          <i class="fas fa-shopping-bag"></i
+        ></a>
+        <a href="/users/profile"><span class="dorado">● </span>Ver Perfil</a>
+        <a href="/users/logout">Cerrar sesión</a>
+      </nav>
+      <% } else {%>
+      <nav>
+        <a href="/users/register" class="items-menu-header"
+          ><span class="dorado">● </span>Creá tu cuenta</a
+        >
+        <a href="/users/login" class="items-menu-header"
+          ><span class="dorado">● </span>Ingresá</a
+        >
+      </nav>
+      <%}%>
+    </div>
+  </section>
+
+  <% if (locals.isAdminLogged){ %>
+  <nav class="menu-header">
+    <div>
+      <p>Logeado como <strong>ADMIN</strong></p>
+    </div>
+    <div class="items-menu-header contenedor-menu-usuario">
+      <div class="user-header">
+        <i class="fas fa-user icono-usuario"></i>
+        <i class="fas fa-angle-down icono"></i>
+      </div>
+      <div class="menu-usuario" id="menu-usuario">
+        <a href="/users/profile">Panel Administrador</a>
+        <a href="/users/detail/1">Ver Perfil</a>
+        <a href="/users/logout">Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <% } else if (locals.isLogged ){%>
+
+  <nav class="menu-header">
+    <div class="items-menu-header">
+      <a href="/users/history">Mis Compras</a>
+    </div>
+    <div class="items-menu-header">
+      <a href="/users/favs">Favoritos <i class="fas fa-heart"></i></a>
+    </div>
+    <div class="items-menu-header">
+      <a href="/products/cart">Carrito <i class="fas fa-shopping-bag"></i></a>
+    </div>
+    <div class="items-menu-header contenedor-menu-usuario">
+      <div class="user-header">
+        <i class="fas fa-user icono-usuario"></i>
+        <i class="fas fa-angle-down icono"></i>
+      </div>
+      <div class="menu-usuario" id="menu-usuario">
+        <a href="/users/profile">Ver Perfil</a>
+        <a href="/users/logout">Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+  <% } else {%>
+
+  <nav class="menu-header">
+    <div class="items-menu-header">
+      <a href="/users/register">Creá tu cuenta</a>
+    </div>
+    <div class="items-menu-header">
+      <a href="/users/login">Ingresá</a>
+    </div>
+  </nav>
+  <%}%>
+</header>

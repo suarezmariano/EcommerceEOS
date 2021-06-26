@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <main class="main-reg-log">
+      <div class="container-all-reg-log">
+        <h2>
+          Editar Usuario <%=userToEdit.firstName%> <%=userToEdit.lastName%> 
+        </h2>
+
+        <form
+          action="/users/edit/<%=userToEdit.id%>?_method=PUT"
+          method="POST"
+          enctype="multipart/form-data"
+          id="formUpdateUser"
+        >
+          <!-- <div class="contenedor-campos-reg-log">
+            <label for="userImage" class="label-reg-log">Imagen</label>
+            <input
+              type="file"
+              id="userImage"
+              name="userImage"
+              accept=".png, .jpg, .jpeg"
+            />
+            <div class="text-danger" id="errorImagen"></div>
+          </div> -->
+
+          <div class="contenedor-campos-reg-log">
+            <label for="firstName" class="label-reg-log">Nombre</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              value="<%=userToEdit.firstName %>"
+            />
+            <div class="text-danger" id="errorfirstName"></div>
+            <% if (locals.errors && errors.firstName) { %>
+            <div class="text-danger"><%= errors.firstName.msg %></div>
+            <% } %>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="lastName" class="label-reg-log">Apellido</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              value="<%=userToEdit.lastName%>"
+            />
+            <div class="text-danger" id="errorlastName"></div>
+            <% if (locals.errors && errors.lastName) { %>
+            <div class="text-danger"><%= errors.lastName.msg %></div>
+            <% } %>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="dateOfBirth" class="label-reg-log"
+              >Fecha de Nacimiento</label
+            >
+            <input
+              type="date"
+              name="dateOfBirth"
+              id="dateOfBirth"
+              value="<%= userToEdit.dateOfBirth%>"
+            />
+            <div class="text-danger" id="errorbdate"></div>
+            <% if (locals.errors && errors.dateOfBirth) { %>
+            <div class="text-danger"><%= errors.dateOfBirth.msg %></div>
+            <% } %>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="email" class="label-reg-log">Correo Electrónico</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value="<%= userToEdit.email%>"
+            />
+            <div class="text-danger" id="errorEmail"></div>
+            <% if (locals.errors && errors.email) { %>
+            <div class="text-danger"><%= errors.email.msg %></div>
+            <% } %>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="phone" class="label-reg-log">Telefono</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              value="<%= userToEdit.phone %>"
+            />
+            <div class="text-danger" id="errorPhone"></div>
+            <% if (locals.errors && errors.email) { %>
+            <div class="text-danger"><%= errors.email.msg %></div>
+            <% } %>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="password" class="label-reg-log">Contraseña</label>
+            <input type="password" name="password" id="password" />
+            <div class="text-danger" id="errorpassword"></div>
+            <% if (locals.errors && errors.password) { %>
+            <div class="text-danger"><%= errors.password.msg %></div>
+            <% } %>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="confirmPassword" class="label-reg-log"
+              >Repetir Contraseña</label
+            >
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+            />
+            <div class="text-danger" id="econfirmPassword"></div>
+          </div> 
+
+          <button type="submit" class="boton-newProduct">
+            <strong>ACTUALIZAR</strong>
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>

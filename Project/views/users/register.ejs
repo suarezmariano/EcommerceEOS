@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <main class="main-reg-log">
+      <div class="container-all-reg-log">
+        <h2>CREÁ TU CUENTA</h2>
+
+        <form action="/users/register" method="POST" id="registerUser">
+          <div class="contenedor-campos-reg-log">
+            <label for="firstName" class="label-reg-log">Nombre</label>
+            <input type="text" name="firstName" id="firstName" />
+
+            <div class="text-danger" id="errorfirstName">
+              <% if (locals.errors && errors.firstName) { %> <%=
+              errors.firstName.msg %> <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="lastName" class="label-reg-log">Apellido</label>
+            <input type="text" name="lastName" id="lastName" />
+
+            <div class="text-danger" id="errorlastName">
+              <% if (locals.errors && errors.lastName) { %> <%=
+              errors.lastName.msg %> <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="dateOfBirth" class="label-reg-log"
+              >Fecha de Nacimiento</label
+            >
+            <input type="date" name="dateOfBirth" id="dateOfBirth" />
+
+            <div class="text-danger" id="errorbdate">
+              <% if (locals.errors && errors.dateOfBirth) { %> <%=
+              errors.dateOfBirth.msg %> <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="email" class="label-reg-log">Correo Electrónico</label>
+            <input type="email" name="email" id="email" />
+
+            <div class="text-danger" id="errorEmail">
+              <% if (locals.errors && errors.email) { %> <%= errors.email.msg %>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="phone" class="label-reg-log">Telefono</label>
+            <input type="text" name="phone" id="phone" />
+
+            <div class="text-danger" id="errorPhone">
+              <% if (locals.errors && errors.phone) { %> <%= errors.phone.msg %>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="password" class="label-reg-log">Contraseña</label>
+            <input type="password" name="password" id="password" />
+
+            <div class="text-danger" id="errorPassword">
+              <% if (locals.errors && errors.password) { %> <%=
+              errors.password.msg %> <% } %>
+            </div>
+          </div>
+
+          <div class="contenedor-campos-reg-log">
+            <label for="confirmPassword" class="label-reg-log"
+              >Repetir Contraseña</label
+            >
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+            />
+            <div class="text-danger" id="econfirmPassword"></div>
+          </div>
+
+          <div class="checkbox-reg-log">
+            <input type="checkbox" name="newsletter" id="newsletter" />
+            <label for="newsletter" class="text-checkbox-reg-log"
+              >Suscribirse al newsletter</label
+            >
+          </div>
+
+          <div class="checkbox-reg-log">
+            <input
+              type="checkbox"
+              name="terminos-condiciones"
+              id="terminos-condiciones"
+              required
+            />
+            <label for="terminos-condiciones" class="text-checkbox-reg-log"
+              >Acepto los <a href="#">Términos y Condiciones</a></label
+            >
+          </div>
+          <div class="contenedor-campos-reg-log" id="erroresRegUser">
+            <p>ERROR: debes rellenar el formulario correctamente</p>
+          </div>
+
+          <div class="boton-reg-log">
+            <button type="submit">CREAR CUENTA</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>

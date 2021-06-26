@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+  <body>
+    <!-- Header-->
+    <%- include("../partials/header.ejs") %>
+
+    <main class="all-products-main">
+      <section class="navbar-products">
+        <div>
+          <h2>PRODUCTOS</h2>
+        </div>
+        <div class="filter-products">
+          <button type="button">
+            <p>Filtrar</p>
+            <i class="fas fa-sort-down"></i>
+          </button>
+        </div>
+      </section>
+
+      <section class="all-products-container">
+        <% for (let i = 0; i< products.length; i++) { %>
+          <% if (products[i].available == "Yes") { %>
+
+            <article class="container-product">
+              <a href="/products/detail/<%= products[i].id_product %> ">
+                <img
+                  src="/images/products/<%= products[i].image %>"
+                  alt="imagen producto"
+                />
+                <div class="product-descpription">
+                  <h3>
+                    <strong
+                      ><%= products[i].brands.brand + " " + products[i].model
+                      %></strong
+                    >
+                  </h3>
+                  <p><%=products[i].short_description %></p>
+                  <p><strong>$<%=products[i].price %></strong></p>
+
+                  <div class="container-edit-product-button">
+                    <% if(locals.isAdminLogged){ %>
+                    <a href="/admin/products/edit/<%= products[i].id_product %>">
+                      <button type="submit" class="edit-product-button">
+                        Editar
+                      </button>
+                    </a>
+                    <form
+                      method="POST"
+                      action="/admin/products/delete/<%=products[i].id_product %>?_method=DELETE"
+                    >
+                      <button type="submit" class="edit-product-button">
+                        Eliminar
+                      </button>
+                 
+                    </form>
+                    <% } %>
+                  </div>
+                </div>
+              </a>
+            </article>
+          <% } %>
+        <% } %>
+      </section>
+    </main>
+
+    <!-- Footer-->
+    <%- include("../partials/footer.ejs")%>
+  </body>
+</html>
